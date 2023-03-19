@@ -1,0 +1,15 @@
+C:\Users\zayce\Desktop\Directum\Directum\bin\Debug\net6.0\Directum.exe
+C:\Users\zayce\Desktop\Directum\Directum\bin\Debug\net6.0\Directum.deps.json
+C:\Users\zayce\Desktop\Directum\Directum\bin\Debug\net6.0\Directum.runtimeconfig.json
+C:\Users\zayce\Desktop\Directum\Directum\bin\Debug\net6.0\Directum.dll
+C:\Users\zayce\Desktop\Directum\Directum\bin\Debug\net6.0\Directum.pdb
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.csproj.AssemblyReference.cache
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.AssemblyInfoInputs.cache
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.AssemblyInfo.cs
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.csproj.CoreCompileInputs.cache
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.dll
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\refint\Directum.dll
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.pdb
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\Directum.genruntimeconfig.cache
+C:\Users\zayce\Desktop\Directum\Directum\obj\Debug\net6.0\ref\Directum.dll
