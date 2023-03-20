@@ -21,7 +21,8 @@ namespace Directum
                 if (month != checkedMonth.Month) continue;
                 var matchMeeting = 0;
                 if (_meetings.Count > 0)
-                    matchMeeting = _meetings.Find(date => Convert.ToInt32(date.StartMeeting.Month) == month)!.StartMeeting
+                    matchMeeting = _meetings.Find(date => Convert.ToInt32(date.StartMeeting.Month) == month)!
+                        .StartMeeting
                         .Month;
                 if (month == matchMeeting)
                 {
@@ -44,10 +45,24 @@ namespace Directum
             return output.ToString();
         }
 
+        public string GetMeetingsForChange()
+        {
+            if (_meetings.Count == 0) return "У вас не заплонированы встречи";
+            var sb = new StringBuilder();
+            _meetings = _meetings.OrderBy(meet => meet.StartMeeting).ToList();
+            foreach (var meeting in _meetings)
+            {
+                sb.Append(
+                    $"{meeting.Id}. Название встречи:{meeting.Name}, Дата начала встречи:{meeting.StartMeeting.TimeOfDay}, Дата окончания встречи:{meeting.EndMeeting.TimeOfDay}\n");
+            }
+
+            return sb.ToString();
+        }
+
         public string ScheduleForOneDay(string day)
         {
             var sb = new StringBuilder();
-            if (day.Length== 0) return "Вы ничего не ввели";
+            if (day.Length == 0) return "Вы ничего не ввели";
             if (!DateTime.TryParse(day, out _)) return "Введите дату в нужном формате";
             var meetingsList = _meetings.Where(meet => meet.StartMeeting.Date == Convert.ToDateTime(day)).ToList();
             if (meetingsList.Count == 0) return "У вас не заплонированы встречи";
@@ -56,8 +71,10 @@ namespace Directum
                 sb.Append(
                     $"Название встречи:{meeting.Name}, Дата начала встречи:{meeting.StartMeeting.TimeOfDay}, Дата окончания встречи:{meeting.EndMeeting.TimeOfDay}\n");
             }
+
             return sb.ToString();
         }
+
         public string AddMeeting(string? name, DateTime startMeeting, DateTime endMeeting,
             DateTime notification)
         {
@@ -84,12 +101,17 @@ namespace Directum
         {
             if (_meetings.Count <= 0)
                 return "У вас не запланированы никакие мероприятия";
-            if (_meetings.FindIndex(x => x.Id == id) != id)
+            Meeting meet = null;
+            foreach (var meeting in _meetings.Where(meeting => meeting.Id == id))
+            {
+                meet = meeting;
+            }
+            if(meet == null)
                 return "Вы ошбились в написании индекса или такой записи не существует";
-            _meetings[id].Name = name!;
-            _meetings[id].StartMeeting = startMeeting;
-            _meetings[id].EndMeeting = endMeeting;
-            _meetings[id].Notification = notification;
+            _meetings[id-1].Name = name!;
+            _meetings[id-1].StartMeeting = startMeeting;
+            _meetings[id-1].EndMeeting = endMeeting;
+            _meetings[id-1].Notification = notification;
             return "Данные о встрече изменены.";
         }
 
@@ -121,6 +143,7 @@ namespace Directum
             return DateTime.TryParse(startMeeting, out _) && DateTime.TryParse(endMeeting, out _) &&
                    DateTime.TryParse(notification, out _);
         }
+
         public async void MeetingAlert()
         {
             if (_meetings.Count <= 0) return;
